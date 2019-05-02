@@ -429,6 +429,7 @@ include('remember.php');
 </html>
 
 <!-- Part 5 -->
-<!--This comment line tests conflicts among branches-->
+<!--This is Parth's comment in Master Branch. Intended to create a conflict with Seren and Thomas changes-->
+
 
 
