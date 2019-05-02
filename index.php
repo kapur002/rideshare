@@ -1,4 +1,4 @@
-<!--This is a edit to the Master Branch-->
+<!--Attempt to create conflict - Parth Branch-->
 <?php
 session_start();
 include('connection.php');
