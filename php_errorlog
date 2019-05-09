@@ -1,0 +1,11 @@
+[05-May-2019 17:54:26 CST6CDT] PHP Parse error:  syntax error, unexpected '}', expecting ',' or ';' in /home/cs441rid/public_html/index.php on line 266
+[08-May-2019 14:03:17 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 14:04:34 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 14:04:49 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 14:05:05 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 14:05:18 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 14:05:19 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 14:05:20 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 14:05:21 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 14:05:23 CST6CDT] PHP Recoverable fatal error:  Object of class mysqli_result could not be converted to string in /home/cs441rid/public_html/profile.php on line 13
+[08-May-2019 21:52:29 CST6CDT] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/cs441rid/public_html/profile.php on line 19

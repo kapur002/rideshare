@@ -1,4 +1,3 @@
-<!--Attempt to create conflict - Parth Branch-->
 <?php
 session_start();
 include('connection.php');
@@ -15,7 +14,7 @@ include('remember.php');
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Car Sharing Website Final</title>
+    <title>Ride Sharing Website</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
       <link href="styling.css" rel="stylesheet">
       <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
@@ -36,14 +35,6 @@ include('remember.php');
               font-size: 5em;
           }
           
-          #bgvideo{
-            position: fixed;
-            right: 0;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-          }
-          
           .bold{
               font-weight: bold;
           }
@@ -51,6 +42,13 @@ include('remember.php');
               width: 100%;
               height: 30vh;
               margin: 10px auto;
+          }
+             #bgvideo{
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
           }
           .signup{
               margin-top: 20px;
@@ -135,6 +133,9 @@ include('remember.php');
       </style>
   </head>
   <body>
+   <video autoplay loop muted id="bgvideo">
+        <source src="traffic.mp4" type="video/mp4">
+      </video>
     <!--Navigation Bar-->  
     <?php
     if(isset($_SESSION["user_id"])){
@@ -145,11 +146,6 @@ include('remember.php');
     ?>
     
       <div class="container-fluid" id="myContainer">
-          
-          <video autoplay loop muted id="bgvideo">
-            <source src="traffic.mp4" type="video/mp4">
-          </video>
-          
           <div class="row">
               <div class="col-md-6 col-md-offset-3">
                   <h1 style="color:	white">Plan your next trip now!</h1>
@@ -189,8 +185,7 @@ include('remember.php');
           </div>
       
       </div>
-      
-      <!--Help modal-->
+ <!--Help modal-->
       <div class="modal" id="helpModal" role="dialog" aria-labelledby="mymodalLabel" aria-hidden="true">
         <div class="modal-dialog">
               <div class="modal-content">
@@ -224,18 +219,19 @@ include('remember.php');
         <div class="modal" id="contactModal" role="dialog" aria-labelledby="mymodalLabel" aria-hidden="true">
           <div class="modal-dialog">
               <div class="modal-content">
+                  <form action="#"  id="contactForm" method="post" name="contactForm">
                 <div class="modal-header">
                   <button class="close" data-dismiss="modal">
                     &times;
                   </button>
-                  <h4 id="myModalLabel">
-                    Contact Us
-                  </h4>
+                  <h4 id="myModalLabel">Contact Us</h4>
                 </div>
                   <div class="modal-body">
                     <div class="form-group">
-                      <label for="contactemail" class="sr-only">Email:</label>
-                      <input class="form-control" type="email" name="contactemail" id="contactemail" placeholder="Email" maxlength="50">
+                        
+                        <label for="contactemail">Email:</label>
+                        <input class="form-control" type="email" name="contactemail" id="contactemail" placeholder="Email" maxlength="50" value="">
+                        
                     </div>
                       <div class="form-group">
                     <label for="message">Message: </label>
@@ -243,16 +239,42 @@ include('remember.php');
                       </div>
                   </div>
                     <div class="modal-footer">
-                        <input class="btn green" name="submit" type="submit" value="Submit">
+                        <input id="send" class="btn green" name="submit" type="submit" value="Submit">
+                        
                         <button type="button" class="btn btn-default" data-dismiss="modal">
                         Cancel
                         </button>
                     </div>
+                      </form>
+                  <?php
+                    if(isset($_POST["submit"])){
+                        //Check for black field
+                        if($_POST["contactemail"]==""||$_POST["message"]==""){
+                            echo "Invalid. Please fill out both Email and Message Fields.";
+                            echo "<script type='text/javascript'>alert('Invalid. Please fill out both Email and Message Fields.');</script>";
+                        }else{
+                            $email = $_POST['contactemail'];
+                            //Filters and sanitizes email data entry
+                            $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+                            $email= filter_var($email, FILTER_VALIDATE_EMAIL);
+                            $headers = 'From:'. $email . "rn"; // Sender's Email
+                            if(!$email){
+                                echo "Invalid Email. Please enter a valid email.";
+                                echo "<script type='text/javascript'>alert('Invalid Email. Please enter a valid email.');</script>";
+                                
+                            }else{
+                                $subject  = "Contact Form";
+                                $message = $_POST['message'];
+                                mail("cs441rideshare@gmail.com", $subject,$message,$headers);
+                                echo "<script type='text/javascript'>alert('Email sent, we will contact you within 7 business days.');</script>";
+                            }
+                        }
+                    }
+                  ?>
               </div>
           </div>
         </div>
       </form>
-
     <!--Login form-->    
       <form method="post" id="loginform">
         <div class="modal" id="loginModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -315,7 +337,7 @@ include('remember.php');
                     &times;
                   </button>
                   <h4 id="myModalLabel">
-                    Sign up today and Start using our Online Notes App! 
+                    Sign up today and Start RideSharing! 
                   </h4>
               </div>
               <div class="modal-body">
@@ -411,7 +433,7 @@ include('remember.php');
     <!-- Footer-->
       <div class="footer">
           <div class="container">
-              <p>cs441rideshare.com Copyright &copy; <?php $today = date("Y"); echo $today?>.</p>
+              <p>cs441rideshare.com Copyright &copy;<?php $today = date("Y"); echo $today?>.</p>
           </div>
       </div>
       
@@ -427,8 +449,3 @@ include('remember.php');
     <script src="javascript.js"></script>
   </body>
 </html>
-
-<!-- Part 5 -->
-<!--Changing this line-->
-
-

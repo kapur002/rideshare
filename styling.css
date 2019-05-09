@@ -49,12 +49,12 @@ body{
     margin-top: 50px;   
 }
 
-/*Button coloring - Set button color to green*/
+/*coloring of buttons*/
 .green{
     background-color: rgba(114,190,35,0.8);   
 }
 
-/*Colors the button only when you hover over it*/
+/*coloring of buttons when hovered on*/
 .green:hover{
     background-color: rgb(114,190,35);   
 }
